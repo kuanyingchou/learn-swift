@@ -69,7 +69,7 @@ print(b)
 
 
 
-
+// tree
 enum Tree<T> {
   indirect case Node(T, Tree<T>, Tree<T>)
   case Nothing
@@ -114,7 +114,7 @@ let root : Tree<Int> =
 
 print(inorder(root)) // [5, 3, 7]
 
-print(height(root))
+print(height(root)) // 2
 
 
 
