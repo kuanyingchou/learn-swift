@@ -70,25 +70,25 @@ print(b)
 
 
 // tree
-enum Tree<T> {
-  indirect case Node(T, Tree<T>, Tree<T>)
+enum BinaryTree<T> {
+  indirect case Node(T, BinaryTree<T>, BinaryTree<T>)
   case Nothing
 }
 
-func inorder<T>(_ root: Tree<T>) -> [T] {
+func inorder<T>(_ root: BinaryTree<T>) -> [T] {
   switch root  {
   case .Nothing: 
     return []
   case let .Node(val, left, right):
-    // return inorder(left) + [val] + inorder(right) 
+    return inorder(left) + [val] + inorder(right) 
     // return inorder(left) as [T] + [val] + inorder(right) 
-    let l = inorder(left) 
-    let r = inorder(right)
-    return l + [val] + r
+    // let l = inorder(left) 
+    // let r = inorder(right)
+    // return l + [val] + r
   }
 }
 
-func height<T>(_ root: Tree<T>) -> Int {
+func height<T>(_ root: BinaryTree<T>) -> Int {
   switch root  {
   case .Nothing:
     return 0
@@ -97,18 +97,18 @@ func height<T>(_ root: Tree<T>) -> Int {
   }
 }
 
-let root : Tree<Int> = 
-  Tree.Node(
+let root : BinaryTree<Int> = 
+  BinaryTree.Node(
     3, 
-    Tree.Node(
+    BinaryTree.Node(
       5, 
-      Tree.Nothing, 
-      Tree.Nothing
+      BinaryTree.Nothing, 
+      BinaryTree.Nothing
     ), 
-    Tree.Node(
+    BinaryTree.Node(
       7, 
-      Tree.Nothing, 
-      Tree.Nothing
+      BinaryTree.Nothing, 
+      BinaryTree.Nothing
     )
   )
 
